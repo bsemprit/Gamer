@@ -14,6 +14,10 @@ Screen.prototype.drawSprite = function(sprite, x, y) {
 	this.ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, x, y, sprite.width, sprite.height)
 };
 
+Screen.prototype.clear = function() {
+	this.ctx.clearRect(0, 0, this.width, this.height);
+}
+
 //Sprite
 function Sprite(image, x, y, width, height) {
 	this.image = image;
