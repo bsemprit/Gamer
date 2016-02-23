@@ -1,5 +1,22 @@
 //Helper functions
 
+
+
+
+//Bullet
+function Bullet(x, y, velocityy, w, h, color){
+	this.x = x;
+	this.y = y;
+	this.velocityy = velocityy;
+	this.width = w;
+	this.height = h;
+	this.color = color;
+};
+
+Bullet.prototype.update = function (){
+	this.y += this.velocityy;
+}
+
 //Screen
 function Screen(width, height) {
 	this.canvas = document.createElement("canvas");
@@ -16,6 +33,11 @@ Screen.prototype.drawSprite = function(sprite, x, y) {
 
 Screen.prototype.clear = function() {
 	this.ctx.clearRect(0, 0, this.width, this.height);
+};
+
+Screen.prototype.drawBullet = function(bullet){
+	this.ctx.fillStyle = bullet.color;
+	this.ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height)
 }
 
 //Sprite
@@ -34,11 +56,11 @@ function PressedKeyHandeler() {
 	this.pressed = {};
 	var pressedHandelerThis = this;
 	document.addEventListener("keydown", function(event) {
-		PressedKeyHandeler.down[event.keyCode] = true;
+		pressedHandelerThis.down[event.keyCode] = true;
 	})
 	document.addEventListener("keyup", function(event) {
-		delete PressedKeyHandeler.down[event.keyCode]
-		delete PressedKeyHandeler.pressed[event.keyCode]
+		delete pressedHandelerThis.down[event.keyCode]
+		delete pressedHandelerThis.pressed[event.keyCode]
 	})
 };
 
