@@ -86,7 +86,7 @@ function run(){
 };
 
 function update(){
-
+	//Shooter
 	if (input.isDown(37)) {
 		//Left key is pressed
 		shooter.x -= 4;
@@ -97,16 +97,39 @@ function update(){
 	var maxPossibleShooterMove = screen.width - (30 + meSprite.width);
 	shooter.x = Math.max(Math.min(shooter.x, maxPossibleShooterMove), 30);
 
+	//Bullets
 	if(input.isPressed(32) || input.isPressed(38)){
 		//spacebar or up arrow
 		bullets.push(new Bullet(shooter.x, shooter.y, -10, 2, 6, "#fff"))
 	}
 
-	for(var i = 0; i < bullets.length; i++){
-		bullets[i].update();
+	for(var i = 0, len = bullets.length; i < len; i++){
+		var b = bullets[i]
+		b.update();
+		if (b.y + b.height < 0 || b.y > screen.height){
+			bullets.splice(i, 1);
+				i--;
+				len--;
+
+		}
+	}
+
+	//random alien shooting
+	if(Math.random() < .05 && alienAds.length > 0) {
+		var randomAlien = Math.floor(Math.random()*alienAds.length -1)
+
+		for(var i = 0, len = alienAds.length; i< len; i++){
+			var oneAlien = alienAds[i]
+			if (randomAlien === i){
+				console.log("random bullet");
+				randomAlien = oneAlien;
+			}
+		}
+		bullets.push(new Bullet(randomAlien.x + randomAlien.w*0.5, randomAlien.y + randomAlien.h, 4, 2, 4, "#fff")) 
 	}
 
 
+	//frames and alien movement update
 	frames ++;
 	if (frames % changeFrames === 0){
 
