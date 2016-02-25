@@ -2,13 +2,58 @@
 <html>
 <head>
   <title>Gamer</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<nav>
+	    <div class="nav-wrapper">
+	      <a href="/" class="brand-logo gamer-logo">Gamer</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <li><a href="/games">Games</a></li>
+	        <li><a href="/users/sign_in">Login</a></li>
+	        <li><a href="/users/sign_up">Sign Up</a></li>
+	      </ul>
+	    </div>
+	</nav>
+        
 <%= yield %>
 
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Gamer</h5>
+                <p class="grey-text text-lighten-4">Made with the spirit of coding and gaming. This site de</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Navigation</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/games">Games</a></li>
+                  <% if current_user %>
+                  <li><a class="grey-text text-lighten-3" href="/users/sign_out" date-method="DELETE">Sign out</a></li>
+                  <% else %>
+                  <li><a class="grey-text text-lighten-3" href="/users/sign_in">Login</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/users/sign_up">Sign up</a></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 </body>
 </html>

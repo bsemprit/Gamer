@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game_profile_id: 
+  timePlayed: 1
+  score: 1
+  user_id: 
+
+two:
+  game_profile_id: 
+  timePlayed: 1
+  score: 1
+  user_id: 

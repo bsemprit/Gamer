@@ -1,6 +1,8 @@
-//Helper functions
+//Intersection
 
-
+function Intersect(ax, ay, aw, ah, bx, by, bw, bh) {
+	return ax < bx+bw && bx < ax+aw && ay < by+bh && by < ay+ah;
+};
 
 
 //Bullet
@@ -24,7 +26,7 @@ function Screen(width, height) {
 	this.canvas.height = this.height = height;
 	this.ctx = this.canvas.getContext("2d");
 	console.log("Screen loaded")
-	document.getElementById("spaceInvader").appendChild(this.canvas)
+	// document.getElementById("spaceInvader").appendChild(this.canvas)
 }
 
 Screen.prototype.drawSprite = function(sprite, x, y) {

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  game_id: 
+  highscore: 1
+  cumulative_score: 1
+
+two:
+  user_id: 
+  game_id: 
+  highscore: 1
+  cumulative_score: 1

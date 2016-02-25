@@ -112,6 +112,16 @@ function update(){
 				len--;
 
 		}
+		for(var alienl = 0, k = alienAds.length; alienl < k; alienl++){
+			var possiblyHitAlien = alienAds[alienl];
+			if(Intersect( b.x, b.y, b.width, b.height, possiblyHitAlien.x, possiblyHitAlien.y, possiblyHitAlien.width,possiblyHitAlien.height))
+				alienAds.splice(alienl, 1);
+				alienl--;
+				bullets.splice(i,1);
+				i--;
+				len--;
+
+		}
 	}
 
 	//random alien shooting

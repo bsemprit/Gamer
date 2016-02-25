@@ -11,11 +11,94 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222144940) do
+ActiveRecord::Schema.define(version: 20160225013234) do
+
+  create_table "chartities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "address"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "charity_id"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "donations", ["charity_id"], name: "index_donations_on_charity_id"
+  add_index "donations", ["user_id"], name: "index_donations_on_user_id"
+
+  create_table "gamer_profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.integer  "highscore"
+    t.integer  "cumulative_score"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "gamer_profiles", ["game_id"], name: "index_gamer_profiles_on_game_id"
+  add_index "gamer_profiles", ["user_id"], name: "index_gamer_profiles_on_user_id"
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "time"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "game_image"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer  "game_profile_id"
+    t.integer  "timePlayed"
+    t.integer  "score"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "sessions", ["game_profile_id"], name: "index_sessions_on_game_profile_id"
+  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id"
 
   create_table "space_invaders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "user_charities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "charity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_charities", ["charity_id"], name: "index_user_charities_on_charity_id"
+  add_index "user_charities", ["user_id"], name: "index_user_charities_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "",            null: false
+    t.string   "encrypted_password",     default: "",            null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,             null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.string   "avatar"
+    t.string   "role",                   default: "GamerPlayer"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
