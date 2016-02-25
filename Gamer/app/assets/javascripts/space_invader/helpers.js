@@ -26,7 +26,7 @@ function Screen(width, height) {
 	this.canvas.height = this.height = height;
 	this.ctx = this.canvas.getContext("2d");
 	console.log("Screen loaded")
-	// document.getElementById("spaceInvader").appendChild(this.canvas)
+	document.getElementById("spaceInvader").appendChild(this.canvas)
 }
 
 Screen.prototype.drawSprite = function(sprite, x, y) {
