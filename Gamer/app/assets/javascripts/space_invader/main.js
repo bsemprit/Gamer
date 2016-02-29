@@ -194,7 +194,7 @@ function update(){
 			movAlien.x +=160 * dir;
 			// console.log(maxPosition);
 			var alienPositionSide = movAlien.x + movAlien.w;
-			var alienPositionHeight = movAlien.y + movAlien.h;
+			var alienPositionHeight = movAlien.y + movAlien.h*2;
 			// console.log(movAlien.w)
 			maxPosition = Math.max(maxPosition, alienPositionSide);
 			minPosition = Math.min(minPosition, movAlien.x);

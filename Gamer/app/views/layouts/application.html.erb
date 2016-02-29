@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gamer</title>
+  <title>GFC</title>
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav>
-	    <div class="nav-wrapper">
-	      <a href="/" class="brand-logo gamer-logo">Gamer</a>
-	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <li><a href="/games">Games</a></li>
-	        <li><a href="/users/sign_in">Login</a></li>
-	        <li><a href="/users/sign_up">Sign Up</a></li>
-	      </ul>
-	    </div>
-	</nav>
-        
-<%= yield %>
+  <header>
+    <nav>
+        <div class="nav-wrapper default-nav-bar light-blue accent-3">
+          <a href="/" class="brand-logo center black-text">G.F.C. Game For Charity</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down ">
+            <li><a href="/games" class="black-text">Games</a></li>
+            <li><a href="/users/sign_in" class="black-text">Login</a></li>
+            <li><a href="/users/sign_up" class="black-text">Sign Up</a></li>
+          </ul>
+        </div>
+    </nav>
+  </header>
+<main>
+  <%= yield %>
+  
+</main>
 
-<footer class="page-footer">
-          <div class="container">
+<footer class="page-footer light-blue accent-3 black-text">
+          <div class="container ">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Gamer</h5>
-                <p class="grey-text text-lighten-4">Made with the spirit of coding and gaming. This site de</p>
+                <h5 class="black-text">GFC</h5>
+                <h6 class="black-text"> Game for Charity</h6>
+                <p class="black-text">Made with the spirit of coding and gaming.</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Navigation</h5>
+                <h5 class="black-text">Navigation</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/games">Games</a></li>
+                  <li><a class="black-text" href="/">Home</a></li>
+                  <li><a class="black-text" href="/games">Games</a></li>
                   <% if current_user %>
-                  <li><a class="grey-text text-lighten-3" href="/users/sign_out" date-method="DELETE">Sign out</a></li>
+                  <li><a class="black-text" href="/users/sign_out" date-method="DELETE">Sign out</a></li>
                   <% else %>
-                  <li><a class="grey-text text-lighten-3" href="/users/sign_in">Login</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/users/sign_up">Sign up</a></li>
+                  <li><a class="black-text" href="/users/sign_in">Login</a></li>
+                  <li><a class="black-text" href="/users/sign_up">Sign up</a></li>
                   <% end %>
                 </ul>
               </div>
             </div>
           </div>
           <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <div class="container black-text">
+            © 2016 Copyright Text
             </div>
           </div>
-        </footer>
+</footer>
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>

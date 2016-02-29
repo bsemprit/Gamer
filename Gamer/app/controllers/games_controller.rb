@@ -7,5 +7,11 @@ class GamesController < ApplicationController
 	end
 
 	def create
+
+		redirect_to "index"
+	end
+
+	def index
+		@games = Game.all
 	end
 end

@@ -1,0 +1,29 @@
+ <div class="row">
+      <div class="row">
+        <div class="col s6">
+        	<%= form_for [@game] do |f| %>
+
+			<%= f.label :name, "Name" %>
+			<%= f.text_field :name, :class => "validate" %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+        	<%=f.label :game_image %>
+			<br>
+			<%= f.file_field :image %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8">
+         	<%= f.label :description%>
+			<%= f.text_area :description %>
+        </div>
+      </div>
+      <div class="row">
+      	<div class="col s3">
+      		<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+      		<% end %>
+      	</div>
+      </div>
+  </div>
