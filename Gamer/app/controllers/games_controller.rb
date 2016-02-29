@@ -7,11 +7,22 @@ class GamesController < ApplicationController
 	end
 
 	def create
+		game = Game.new(game_params)
 
-		redirect_to "index"
+		if game.save?
+			redirect_to "index"
+		else
+			render "new"
+		end
 	end
 
 	def index
 		@games = Game.all
+	end
+
+	private
+
+	def game_params
+		params.require(:game).permit(:name, :game_image, :description)
 	end
 end

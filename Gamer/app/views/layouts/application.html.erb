@@ -15,11 +15,21 @@
   <header>
     <nav>
         <div class="nav-wrapper default-nav-bar light-blue accent-3">
-          <a href="/" class="brand-logo center black-text">G.F.C. Game For Charity</a>
+          <%=link_to("G.F.C. Game For Charity", root_path, class:"brand-logo center black-text") %>
           <ul id="nav-mobile" class="right hide-on-med-and-down ">
-            <li><a href="/games" class="black-text">Games</a></li>
-            <li><a href="/users/sign_in" class="black-text">Login</a></li>
-            <li><a href="/users/sign_up" class="black-text">Sign Up</a></li>
+            <li><%= link_to("Games", games_path, class: "black-text") %></li>
+            <% if user_signed_in? %>
+            <li>
+            <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "black-text") %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to("Login", new_user_session_path, class: "black-text") %>
+            </li>
+            <li>
+            <%= link_to("Sign Up", new_user_registration_path, class: "black-text") %>
+            </li>
+            <% end %>
           </ul>
         </div>
     </nav>
@@ -40,13 +50,23 @@
               <div class="col l4 offset-l2 s12">
                 <h5 class="black-text">Navigation</h5>
                 <ul>
-                  <li><a class="black-text" href="/">Home</a></li>
-                  <li><a class="black-text" href="/games">Games</a></li>
+                  <li>
+                      <%=link_to("Home", root_path, class:"black-text") %>
+                  </li>
+                  <li>
+                      <%= link_to("Games", games_path, class: "black-text") %>
+                  </li>
                   <% if current_user %>
-                  <li><a class="black-text" href="/users/sign_out" date-method="DELETE">Sign out</a></li>
+                  <li>
+                      <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "black-text") %>
+                  </li>
                   <% else %>
-                  <li><a class="black-text" href="/users/sign_in">Login</a></li>
-                  <li><a class="black-text" href="/users/sign_up">Sign up</a></li>
+                  <li>
+                     <%= link_to("Login", new_user_session_path, class: "black-text") %>
+                  </li>
+                  <li>
+                    <%= link_to("Sign Up", new_user_registration_path, class: "black-text") %> 
+                  </li>
                   <% end %>
                 </ul>
               </div>

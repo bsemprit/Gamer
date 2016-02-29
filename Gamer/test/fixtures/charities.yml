@@ -2,12 +2,6 @@
 
 one:
   name: MyString
-  email: MyString
-  address: MyString
-  description: MyText
 
 two:
   name: MyString
-  email: MyString
-  address: MyString
-  description: MyText

@@ -1,6 +1,7 @@
 $(document).on("ready", function(){
 	console.log("Getting started")
 
+
 	main();
 
 
@@ -8,16 +9,15 @@ $(document).on("ready", function(){
 
 //Main variables
 
-var screen, input, adSprites, meSprite;
+var screen, input, adSprites, meSprite, deadBullets, deadAliens;
 var alienAds, frames, spriteFrames, changeFrames;
-var dir, shooter, bullet, bullets, bulletsAlien;
+var dir, shooter, bullet, bullets, bulletsAlien, deadAlienBullets;
 var isGameOver = false;
 
 
 //Functions needed to start the game
 
 function main() {
-	console.log("MAIN");
 	screen = new Screen(900, 600);
 	input = new PressedKeyHandeler();
 
@@ -66,6 +66,9 @@ function initialize(){
 
 	bullets = [];
 	bulletsAlien = [];
+	deadAlienBullets = [];
+	deadBullets = [];
+	deadAliens = [];
 
 	shooter = {
 		sprite: meSprite,
@@ -92,10 +95,10 @@ function initialize(){
 
 function run(){
 	var paintScene = function(){
-		console.log("PAINTIN");
 
 		if (isGameOver === true){
 			console.log("GAME OVA");
+			screen.clear();
 			return;
 		}
 
@@ -126,12 +129,12 @@ function update(){
 	//Bullets
 	if(input.isPressed(32)){
 		//spacebar or up arrow
-		console.log("New Bullet")
+		// console.log("New Bullet")
 		bullets.push(new Bullet(shooter.x, shooter.y, -10, 2, 6, "#fff"))
 	}
 
-	var deadBullets = [];
-	var deadAliens = [];
+	deadBullets = [];
+	deadAliens = [];
 
 	for(var i = 0, len = bullets.length; i < len; i++){
 		console.log("BULLER LLOOOOPPPPPPPP");
@@ -140,47 +143,58 @@ function update(){
 		if (b.y + b.height < 0 || b.y > screen.height){
 			deadBullets.push(i);
 		}
-
+		console.log(alienAds.length, "Alien Length")
 		for(var k = 0, alienl = alienAds.length; k < alienl; k++){
 			console.log("HE GOT SHOT");
 			var possiblyHitAlien = alienAds[k];
-			if(Intersect(possiblyHitAlien.x, possiblyHitAlien.y, possiblyHitAlien.width, possiblyHitAlien.height, b.x, b.y, b.width, b.height)) {
+			console.log(possiblyHitAlien, b)
+			if(Intersect(possiblyHitAlien.x, possiblyHitAlien.y, possiblyHitAlien.w, possiblyHitAlien.h, b.x, b.y, b.width, b.height)) {
 				console.log(k, "---", i)
 				deadAliens.push(k);
 				deadBullets.push(i);
 			}
-
 		}
-
-		removeIndexes(alienAds, deadAliens);
-		removeIndexes(bullets, deadBullets);
-
 		}
-		for(var j = 0, len = bulletsAlien.length; j <len; j++) {
-			console.log("Check if HIT")
-			var alienBullet = bulletsAlien[j]
-		if(Intersect(alienBullet.x, alienBullet.y, alienBullet.width, alienBullet.height, meSprite.x, meSprite.y, meSprite.width, meSprite.height)){
-			console.log("Me HIT")
-			endGame();
-		}
+		
+	if(alienAds.length === 0){
+		endGame();
 	}
+		var amountOfAliens = alienAds.length
+		var randomness = Math.random()
+		// console.log("SHOOT?", { amountOfAliens, randomness })
 
 	//random alien shooting
-	if(Math.random() < .05 && alienAds.length > 0) {
-		var randomAlien = Math.floor(Math.random()*alienAds.length -1)
+	if(randomness < .1 && alienAds.length > 0) {
+		var randomAlien = Math.floor(Math.random()*alienAds.length)
 
 		for(var i = 0, len = alienAds.length; i< len; i++){
 			console.log("shoot maybe?>>>>??????");
 			var oneAlien = alienAds[i]
 			if (randomAlien === i){
-				console.log("random bullet");
-				randomAlien = oneAlien;
+				// console.log("random bullet", oneAlien.x, oneAlien.w, oneAlien.y, oneAlien.h);
+				bulletsAlien.push(new Bullet(oneAlien.x + oneAlien.w*0.5, oneAlien.y + oneAlien.h, 4, 2, 4, "#f00")) 
 			}
 		}
-		bulletsAlien.push(new Bullet(randomAlien.x + randomAlien.w*0.5, randomAlien.y + randomAlien.h, 4, 2, 4, "blue")) 
 	}
 
-
+			deadAlienBullets = [];
+		for(var j = 0, len = bulletsAlien.length; j <len; j++) {
+			console.log("Move alien bullet")
+			var alienBullet = bulletsAlien[j]
+			alienBullet.update();
+			console.log(screen.height, alienBullet.y)
+		if(alienBullet.y > screen.height){
+			deadAlienBullets.push(j);
+		}
+		if(Intersect(alienBullet.x, alienBullet.y, alienBullet.width, alienBullet.height, meSprite.x, meSprite.y, meSprite.width, meSprite.height)){
+			console.log("Me HIT")
+			endGame();
+			}
+		}
+		console.log(deadAlienBullets, "Alien bullets");
+		removeIndexes(alienAds, deadAliens);
+		removeIndexes(bullets, deadBullets);
+		removeIndexes(bulletsAlien, deadAlienBullets);
 
 
 	//frames and alien movement update
@@ -223,19 +237,23 @@ function update(){
 };
 
 function render(){
-	console.log("RENDER");
 	screen.clear();
 	for(var i = 0; i < alienAds.length; i++){
-		console.log("RENDER LOOP");
 		var nextAlien = alienAds[i];
 		screen.drawSprite(nextAlien.sprite, nextAlien.x, nextAlien.y)
 	}
 
-	screen.ctx.save();
 	for(var i = 0; i < bullets.length; i++){
 		console.log("BULLER RENDER");
 		screen.drawBullet(bullets[i]);
 	}
+
+	for(var i = 0; i < bulletsAlien.length; i++){
+		console.log("Alien bullet RENDER");
+
+		screen.drawBullet(bulletsAlien[i]);
+	}
+	screen.ctx.save();
 	screen.ctx.restore();
 
 	screen.drawSprite(shooter.sprite, shooter.x, shooter.y);

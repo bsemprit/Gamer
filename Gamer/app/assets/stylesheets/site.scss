@@ -23,9 +23,17 @@ canvas {
   }
 
   .home-content {
-  	background-color: orange;
+  	// background: url("RetroStripes1920x1080.jpg");
   	margin: 0;
   	width: 100%;
-  	height: 100vh;
+  	height: 60vh;
   	max-width: 100%;
+  }
+
+  .buttons-holder{
+  	height: 60vh;
+  }
+
+  .home-buttons {
+	margin: 20px;
   }

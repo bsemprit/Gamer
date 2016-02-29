@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  get "/" => "site#home"
+  root "site#home"
+  post "/users/:id" => "users#updatecharity"
   resources :charities
   resources :users
   resources :games

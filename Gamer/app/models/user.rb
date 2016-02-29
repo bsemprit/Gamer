@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :games, through: :gamerProfile
-  has_many :charities, through: :userCharties
+  has_many :charities, through: :userCharities
   has_many :charities, through: :donations
   has_many :donations
 end

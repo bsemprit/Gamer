@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ChartityTest < ActiveSupport::TestCase
+class CharityTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

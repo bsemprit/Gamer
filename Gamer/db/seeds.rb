@@ -9,4 +9,8 @@
 bianca = User.create(email: "bsemprit@gmail.com", password: "123123123", password_confirmation: "123123123", role: "adminGamer")
 anais = User.create(email: "anna@gmail.com", password: "123123123", password_confirmation: "123123123", role: "adminGamer")
 
-# space_invader = Game.create(name: "Space Invader", description: "")
+Humane_society = Charity.create(name: "Humane Society")
+
+UNCF = Charity.create(name: "UNCF")
+
+Homes_For_Our_Troops = Charity.create(name: "Homes For Our Troops")

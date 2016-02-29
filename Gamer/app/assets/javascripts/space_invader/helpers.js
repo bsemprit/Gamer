@@ -2,6 +2,7 @@
 
 function Intersect(ax, ay, aw, ah, bx, by, bw, bh) {
 	return ax < bx+bw && bx < ax+aw && ay < by+bh && by < ay+ah;
+
 };
 
 
@@ -58,6 +59,9 @@ function PressedKeyHandeler() {
 	this.pressed = {};
 	var pressedHandelerThis = this;
 	document.addEventListener("keydown", function(event) {
+		if (event.keyCode === 32){
+			event.preventDefault();
+		}
 		pressedHandelerThis.down[event.keyCode] = true;
 	})
 	document.addEventListener("keyup", function(event) {
