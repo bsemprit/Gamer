@@ -9,10 +9,10 @@ class GamesController < ApplicationController
 	def create
 		game = Game.new(game_params)
 
-		if game.save?
-			redirect_to "index"
+		if game.save
+			redirect_to games_path
 		else
-			render "new"
+			render "index"
 		end
 	end
 
@@ -20,9 +20,13 @@ class GamesController < ApplicationController
 		@games = Game.all
 	end
 
+	def show
+		@game = Game.find_by(id: params[:id])
+	end
+
 	private
 
 	def game_params
-		params.require(:game).permit(:name, :game_image, :description)
+		params.require(:game).permit(:name, :game_image, :description, :time)
 	end
 end

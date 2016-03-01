@@ -6,9 +6,10 @@ canvas {
 	background-color: #000;
 }
 
-.spaceInvader {
+#Space {
 	width: 100%;
-	height: 1200px;
+	height: 600px;
+	background-color: black;
 }
 
   body {
@@ -36,4 +37,18 @@ canvas {
 
   .home-buttons {
 	margin: 20px;
+  }
+
+  .cool-avatar {
+  	width: 144px;
+  	height: 144px;
+  	margin: 10px;
+  }
+
+  .game-over, .start-game {
+  	font-size: 100px;
+  }
+
+  .start-holder {
+  	width: 100%;
   }

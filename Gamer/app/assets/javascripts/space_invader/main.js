@@ -1,8 +1,13 @@
-$(document).on("ready", function(){
+$(document).on("page:change", function(){
 	console.log("Getting started")
 
 
+$("#Space").on("click", function(event){
+	event.preventDefault();
+	$(event.currentTarget).empty();
 	main();
+	
+})
 
 
 
@@ -18,7 +23,7 @@ var isGameOver = false;
 //Functions needed to start the game
 
 function main() {
-	screen = new Screen(900, 600);
+	screen = new Screen(1200, 600);
 	input = new PressedKeyHandeler();
 
 	var meSpriteImage = new Image();
@@ -79,7 +84,7 @@ function initialize(){
 
 	for(var i = 0; i < rows.length - 1	; i++) {
 		console.log("ROWS LOOP");
-		for(var j = 0; j < 3; j++) {
+		for(var j = 0; j < 5; j++) {
 			console.log("INDIVIDUAL LOOP");
 			var whichRow = rows[i];
 			alienAds.push({
@@ -99,6 +104,14 @@ function run(){
 		if (isGameOver === true){
 			console.log("GAME OVA");
 			screen.clear();
+			var html =`
+			<div class="valign start-holder center-align">
+					<h4 class="red-text darken-4-text game-over"> GAME OVER </h4><br>
+					<a href="#" class="start-game light-green-text text-accent-4">Start Game</a>
+				</div>
+			`
+			$("#Space").empty()
+			$("#Space").append(html)
 			return;
 		}
 
@@ -186,7 +199,7 @@ function update(){
 		if(alienBullet.y > screen.height){
 			deadAlienBullets.push(j);
 		}
-		if(Intersect(alienBullet.x, alienBullet.y, alienBullet.width, alienBullet.height, meSprite.x, meSprite.y, meSprite.width, meSprite.height)){
+		if(Intersect(shooter.x, shooter.y, 13, 22, alienBullet.x, alienBullet.y, alienBullet.width, alienBullet.height)){
 			console.log("Me HIT")
 			endGame();
 			}

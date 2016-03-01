@@ -20,6 +20,12 @@
             <li><%= link_to("Games", games_path, class: "black-text") %></li>
             <% if user_signed_in? %>
             <li>
+            <%= link_to("Select a Charity", charities_path, class: "black-text") %>
+            </li>
+            <li>
+            <%= link_to("Profile", user_path(current_user), class: "red-text") %>
+            </li>
+            <li>
             <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "black-text") %>
             </li>
             <% else %>

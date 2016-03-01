@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+
+			<% @games.each do |game|%>
+		<div class="col s12 l6">
+				
+			<div class="card large">
+            <div class="card-image">
+            <%= image_tag "spaceAdInvaders.jpg", size:"400x300" if game.name== "Space Ad Invaders" %>
+            <%= image_tag "pacMan.gif", size:"400x300" if game.name== "Pac Man Ads" %>
+              <% if game.game_image.nil? %>
+              <img src="images/sample-1.jpg">
+              <%end %>
+              <span class="card-title"> <%=game.name %></span>
+            </div>
+            <div class="card-content">
+              <p> <%= game.description %></p>
+            </div>
+            <div class="card-action">
+              Play: <a href="/games/<%=game.id%>"><%= game.name %></a>
+	          <% if current_user.role == "adminGamer" %>
+          	  <%= link_to("Edit", edit_game_path(game)) %>
+          	  <% end %>
+            </div>
+          </div>
+		</div>
+          <% end %>
+
+		<% if current_user.role == "adminGamer" %>
+          	  <%= link_to("Create new Game", new_game_path) %>
+      	<% end %>
+
+	</div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="row">
+		<div class="col s5 push-s1">
+			<%= image_tag "one.jpg", alt: "Cool image Here", class: "cool-avatar" %>
+		</div>
+		<div class="col s4">
+			<h4>
+				Hello, <%= @user.name %>!
+			</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s10 push-s1">
+			<h5>
+				Points: 
+			</h5>
+			<hr>
+			</div>
+			<div class="col s10 push-s1">
+			<h5>
+				Charities Helped:
+			</h5>
+			<ul>
+				<% @user.charities.each_with_index do |charity, i|%>
+
+				<% if charity.name? && charity === @user.charities.last %>
+				<li>
+					<p>
+					You are currently helping: <%= charity.name %>
+					</p>
+				</li>
+				<% elsif charity.name? %>
+				<li>
+					<p>
+						<%= charity.name %>
+					</p>
+				</li>
+				<% else %>
+				<li>
+					<a href="/charities">Need to pick a Charity? Click Here.</a>
+				</li>
+				<% end %>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
