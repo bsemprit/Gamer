@@ -13,19 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20160302001515) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "charities", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "chartities", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "address"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "donations", force: :cascade do |t|
@@ -36,31 +30,17 @@ ActiveRecord::Schema.define(version: 20160302001515) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "donations", ["charity_id"], name: "index_donations_on_charity_id"
-  add_index "donations", ["user_id"], name: "index_donations_on_user_id"
+  add_index "donations", ["charity_id"], name: "index_donations_on_charity_id", using: :btree
+  add_index "donations", ["user_id"], name: "index_donations_on_user_id", using: :btree
 
   create_table "game_sessions", force: :cascade do |t|
-    t.integer  "gamer_profile_id"
     t.integer  "user_id"
     t.integer  "score"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "game_sessions", ["gamer_profile_id"], name: "index_game_sessions_on_gamer_profile_id"
-  add_index "game_sessions", ["user_id"], name: "index_game_sessions_on_user_id"
-
-  create_table "gamer_profiles", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "game_id"
-    t.integer  "highscore"
-    t.integer  "cumulative_score"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "gamer_profiles", ["game_id"], name: "index_gamer_profiles_on_game_id"
-  add_index "gamer_profiles", ["user_id"], name: "index_gamer_profiles_on_user_id"
+  add_index "game_sessions", ["user_id"], name: "index_game_sessions_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
@@ -68,23 +48,6 @@ ActiveRecord::Schema.define(version: 20160302001515) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "game_image"
-  end
-
-  create_table "sessions", force: :cascade do |t|
-    t.integer  "gamer_profile_id"
-    t.integer  "user_id"
-    t.integer  "score"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "sessions", ["gamer_profile_id"], name: "index_sessions_on_gamer_profile_id"
-  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id"
-
-  create_table "space_invaders", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "user_charities", force: :cascade do |t|
@@ -94,8 +57,8 @@ ActiveRecord::Schema.define(version: 20160302001515) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_charities", ["charity_id"], name: "index_user_charities_on_charity_id"
-  add_index "user_charities", ["user_id"], name: "index_user_charities_on_user_id"
+  add_index "user_charities", ["charity_id"], name: "index_user_charities_on_charity_id", using: :btree
+  add_index "user_charities", ["user_id"], name: "index_user_charities_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",            null: false
@@ -117,7 +80,12 @@ ActiveRecord::Schema.define(version: 20160302001515) do
     t.integer  "highscore",              default: 0
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "donations", "charities"
+  add_foreign_key "donations", "users"
+  add_foreign_key "game_sessions", "users"
+  add_foreign_key "user_charities", "charities"
+  add_foreign_key "user_charities", "users"
 end
