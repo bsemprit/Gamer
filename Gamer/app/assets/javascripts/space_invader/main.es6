@@ -27,9 +27,9 @@ function main() {
 	input = new PressedKeyHandeler();
 
 	var meSpriteImage = new Image();
-	meSpriteImage.src = "nurek.png"
+	meSpriteImage.src = "/assets/nurek.png"
 	var alien = new Image();
-	alien.src = "UFOs.png"
+	alien.src = "/assets/UFOs.png"
 
 	alien.addEventListener("load", function(){
 		adSprites = [
