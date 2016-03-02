@@ -1,0 +1,86 @@
+/* line 5, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/games.scss */
+.explosion {
+  height: 500px;
+  width: 420px; }
+/* line 5, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+canvas {
+  background-color: #000;
+}
+
+/* line 9, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+#Space {
+  width: 100%;
+  height: 600px;
+  background-color: black;
+}
+
+/* line 15, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+.brand-logo {
+  font-family: 'Black Ops One', cursive;
+  color: red !important;
+}
+
+/* line 20, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* line 26, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+html {
+  font-family: 'ABeeZee', sans-serif !important;
+}
+
+/* line 30, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+main {
+  flex: 1 0 auto;
+  height: 100%;
+}
+
+/* line 35, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+.home-content {
+  margin: 0;
+  width: 100%;
+  height: 60vh;
+  max-width: 100%;
+}
+
+/* line 43, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+.cool-avatar {
+  width: 144px;
+  height: 144px;
+  margin: 10px;
+}
+
+/* line 49, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+.game-over, .start-game {
+  font-size: 100px;
+}
+
+/* line 53, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+.start-holder {
+  width: 100%;
+}
+
+/* line 57, /home/violet/MEGA/MEGAsync/Gamer/Gamer/app/assets/stylesheets/site.scss */
+.full-slide {
+  width: 100%;
+  height: 450px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+

@@ -1,7 +1,7 @@
 $(document).on("page:change", function(){
 	console.log("Getting started")
 
-
+	$('.slider').slider();
 
 
 $("#Space").on("click", function(event){
@@ -16,7 +16,7 @@ $("#Space").on("click", function(event){
 
 //Main variables
 
-var screen, input, adSprites, meSprite, deadBullets, deadAliens;
+var screen, input, adSprites, meSprite, deadBullets, deadAliens, maxHeight;
 var alienAds, frames, spriteFrames, changeFrames;
 var dir, shooter, bullet, bullets, bulletsAlien, deadAlienBullets;
 var isGameOver = false;
@@ -39,12 +39,12 @@ function main() {
 			[new Sprite(alien, 170, 0, 150, 75)],
 			[new Sprite(alien, 0, 110, 150, 75)]
 		];
-		console.log("ALIENS IMAGES");
+		// console.log("ALIENS IMAGES");
 		ready();
 	})
 
 	meSpriteImage.addEventListener("load", function(){
-		console.log("ME IMAGE");
+		// console.log("ME IMAGE");
 		meSprite = new Sprite(this, 0, 0, 13, 22)
 		ready();
 	})
@@ -85,9 +85,9 @@ function initialize(){
 	
 
 	for(var i = 0; i < rows.length - 1	; i++) {
-		console.log("ROWS LOOP");
+		// console.log("ROWS LOOP");
 		for(var j = 0; j < 5; j++) {
-			console.log("INDIVIDUAL LOOP");
+			// console.log("INDIVIDUAL LOOP");
 			var whichRow = rows[i];
 			alienAds.push({
 				sprite: adSprites[whichRow][0],
@@ -104,17 +104,17 @@ function run(){
 	var paintScene = function(){
 
 		if (isGameOver === true){
-			console.log("GAME OVA");
+			// console.log("GAME OVA");
 			screen.clear();
 
 			var explosiveness = "<div class='valign start-holder center'> <img src='/assets/explosion2.gif' class='explosion' alt='Explosion GIF'> </div>"
 			$("#Space").empty();
 			$("#Space").append(explosiveness);
-			setTimeout(afterExplosion, 5000);
+			setTimeout(afterExplosion, 1000);
 			return;
 		}
 
-		console.log("CONTINUING WITH GAME!!!");
+		// console.log("CONTINUING WITH GAME!!!");
 
 		window.requestAnimationFrame(paintScene, screen.canvas);
 
@@ -126,7 +126,7 @@ function run(){
 };
 
 function update(){
-	console.log("UPDATE");
+	// console.log("UPDATE");
 	//Shooter
 	if (input.isDown(37)) {
 		//Left key is pressed
@@ -149,7 +149,7 @@ function update(){
 	deadAliens = [];
 
 	for(var i = 0, len = bullets.length; i < len; i++){
-		console.log("BULLER LLOOOOPPPPPPPP");
+		// console.log("BULLER LLOOOOPPPPPPPP");
 		var b = bullets[i]
 		b.update();
 		if (b.y + b.height < 0 || b.y > screen.height){
@@ -157,11 +157,11 @@ function update(){
 		}
 		console.log(alienAds.length, "Alien Length")
 		for(var k = 0, alienl = alienAds.length; k < alienl; k++){
-			console.log("HE GOT SHOT");
+			// console.log("HE GOT SHOT");
 			var possiblyHitAlien = alienAds[k];
-			console.log(possiblyHitAlien, b)
+			// console.log(possiblyHitAlien, b)
 			if(Intersect(possiblyHitAlien.x, possiblyHitAlien.y, possiblyHitAlien.w, possiblyHitAlien.h, b.x, b.y, b.width, b.height)) {
-				console.log(k, "---", i)
+				// console.log(k, "---", i)
 				deadAliens.push(k);
 				deadBullets.push(i);
 				addPoints();
@@ -181,7 +181,7 @@ function update(){
 		var randomAlien = Math.floor(Math.random()*alienAds.length)
 
 		for(var i = 0, len = alienAds.length; i< len; i++){
-			console.log("shoot maybe?>>>>??????");
+			// console.log("shoot maybe?>>>>??????");
 			var oneAlien = alienAds[i]
 			if (randomAlien === i){
 				// console.log("random bullet", oneAlien.x, oneAlien.w, oneAlien.y, oneAlien.h);
@@ -192,19 +192,19 @@ function update(){
 
 			deadAlienBullets = [];
 		for(var j = 0, len = bulletsAlien.length; j <len; j++) {
-			console.log("Move alien bullet")
+			// console.log("Move alien bullet")
 			var alienBullet = bulletsAlien[j]
 			alienBullet.update();
-			console.log(screen.height, alienBullet.y)
+			// console.log(screen.height, alienBullet.y)
 		if(alienBullet.y > screen.height){
 			deadAlienBullets.push(j);
 		}
 		if(Intersect(shooter.x, shooter.y, 13, 22, alienBullet.x, alienBullet.y, alienBullet.width, alienBullet.height)){
-			console.log("Me HIT")
+			// console.log("Me HIT")
 			endGame();
 			}
 		}
-		console.log(deadAlienBullets, "Alien bullets");
+		// console.log(deadAlienBullets, "Alien bullets");
 		removeIndexes(alienAds, deadAliens);
 		removeIndexes(bullets, deadBullets);
 		removeIndexes(bulletsAlien, deadAlienBullets);
@@ -216,9 +216,9 @@ function update(){
 
 	var maxPosition = 0, minPosition = screen.width;
 		for(var i = 0; i < alienAds.length; i++){
-			console.log("MOVEMENT LOOPPPPp");
+			// console.log("MOVEMENT LOOPPPPp");
 			var movAlien = alienAds[i];
-			movAlien.x +=160 * dir;
+			movAlien.x +=260 * dir;
 			// console.log(maxPosition);
 			var alienPositionSide = movAlien.x + movAlien.w;
 			var alienPositionHeight = movAlien.y + movAlien.h*2;
@@ -230,7 +230,7 @@ function update(){
 		}
 
 		if(maxPosition > screen.width || minPosition < 0){
-			console.log("Down!!")
+			// console.log("Down!!")
 			dir *= -1;
 			for(var i = 0; i < alienAds.length; i++){
 				var movAlien = alienAds[i];
@@ -257,12 +257,12 @@ function render(){
 	}
 
 	for(var i = 0; i < bullets.length; i++){
-		console.log("BULLER RENDER");
+		// console.log("BULLER RENDER");
 		screen.drawBullet(bullets[i]);
 	}
 
 	for(var i = 0; i < bulletsAlien.length; i++){
-		console.log("Alien bullet RENDER");
+		// console.log("Alien bullet RENDER");
 
 		screen.drawBullet(bulletsAlien[i]);
 	}
@@ -274,7 +274,7 @@ function render(){
 
 
 function removeIndexes (list, deadIndexes) {
-	console.log("Remove alien and bullet")
+	// console.log("Remove alien and bullet")
 	//This is the change of possible index of dead things
 	var removedSoFar = 0;
 
@@ -286,14 +286,14 @@ function removeIndexes (list, deadIndexes) {
 		//IMPORTANT!!! Adds to the change index
 		removedSoFar +=1;
 	})
-	console.log(list);
-	console.log(deadIndexes);
+	// console.log(list);
+	// console.log(deadIndexes);
 }
 
 function addPoints(){
 	points += 100;
 	$(".points").text(points)
-	console.log("Adding points", points)
+	// console.log("Adding points", points)
 }
 
 
@@ -321,7 +321,7 @@ function generateSession(score){
 }
 
 function afterExplosion(){
-	var html ="<div class='valign start-holder center-align'> <h4 class='red-text darken-4-text game-over'> GAME OVER </h4><br> <a href='#' class='start-game light-green-text text-accent-4'>Start Game</a> </div>"
+	var html ="<div class='valign start-holder center-align'> <h4 class='red-text darken-4-text game-over'> GAME OVER </h4> </div>"
 			$("#Space").empty()
 			$("#Space").append(html)
 }

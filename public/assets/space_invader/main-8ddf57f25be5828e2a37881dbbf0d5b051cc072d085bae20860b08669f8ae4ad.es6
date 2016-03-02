@@ -2,6 +2,8 @@ $(document).on("page:change", function(){
 	console.log("Getting started")
 
 
+
+
 $("#Space").on("click", function(event){
 	event.preventDefault();
 	$(event.currentTarget).empty();
@@ -105,10 +107,10 @@ function run(){
 			console.log("GAME OVA");
 			screen.clear();
 
-			var explosiveness = "<div class='valign start-holder center'> <img src='explosion2.gif' class='explosion' alt='Explosion GIF'> </div>"
+			var explosiveness = "<div class='valign start-holder center'> <img src='/assets/explosion2.gif' class='explosion' alt='Explosion GIF'> </div>"
 			$("#Space").empty();
 			$("#Space").append(explosiveness);
-			setTimeout(afterExplosion, 10000);
+			setTimeout(afterExplosion, 3000);
 			return;
 		}
 
