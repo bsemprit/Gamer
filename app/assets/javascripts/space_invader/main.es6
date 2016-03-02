@@ -110,7 +110,7 @@ function run(){
 			var explosiveness = "<div class='valign start-holder center'> <img src='/assets/explosion2.gif' class='explosion' alt='Explosion GIF'> </div>"
 			$("#Space").empty();
 			$("#Space").append(explosiveness);
-			setTimeout(afterExplosion, 10000);
+			setTimeout(afterExplosion, 5000);
 			return;
 		}
 
