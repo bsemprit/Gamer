@@ -45,3 +45,5 @@ group :development do
 end
 
 gem 'carrierwave'
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'

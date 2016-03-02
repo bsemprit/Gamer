@@ -16,6 +16,6 @@ class GameSessionsController < ApplicationController
 	private
 
 	def session_params
-		params.require(:game_session).permit(:user_id, :gamer_profile_id, :score)
+		params.require(:game_session).permit(:user_id, :score)
 	end
 end

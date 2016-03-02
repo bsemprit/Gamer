@@ -104,9 +104,11 @@ function run(){
 		if (isGameOver === true){
 			console.log("GAME OVA");
 			screen.clear();
-			var html ="<div class='valign start-holder center-align'> <h4 class='red-text darken-4-text game-over'> GAME OVER </h4><br> <a href='#' class='start-game light-green-text text-accent-4'>Start Game</a> </div>"
-			$("#Space").empty()
-			$("#Space").append(html)
+
+			var explosiveness = "<div class='valign start-holder center'> <img src='explosion2.gif' class='explosion' alt='Explosion GIF'> </div>"
+			$("#Space").empty();
+			$("#Space").append(explosiveness);
+			setTimeout(afterExplosion, 10000);
 			return;
 		}
 
@@ -297,14 +299,15 @@ function endGame(){
 	screen.clear();
 	isGameOver = true;
 	generateSession(points);
+	console.log("Explosion!")
 }
 
 function generateSession(score){
-	var gameID = $(".points-holder").data("game-id")
+	// var gameID = $(".points-holder").data("game-id")
 	var userID = $(".points-holder").data("user-id")
 	$.ajax({
 		url: '/api/game_sessions',
-		data: {game_session: {gamer_profile_id: `${gameID}`, score: `${score}`, user_id: `${gameID}`}},
+		data: {game_session: {score: `${score}`, user_id: `${userID}`}},
 		method: "POST",
 		success: function(event) {
 			console.log("Yes! Sent it", event)
@@ -313,6 +316,12 @@ function generateSession(score){
 			console.log(event)
 		}
 	})
+}
+
+function afterExplosion(){
+	var html ="<div class='valign start-holder center-align'> <h4 class='red-text darken-4-text game-over'> GAME OVER </h4><br> <a href='#' class='start-game light-green-text text-accent-4'>Start Game</a> </div>"
+			$("#Space").empty()
+			$("#Space").append(html)
 }
 
 })
