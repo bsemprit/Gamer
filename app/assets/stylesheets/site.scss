@@ -12,10 +12,15 @@ canvas {
 	background-color: black;
 }
 
+.brand-logo {
+  font-family: 'Black Ops One', cursive;
+}
+
   body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'ABeeZee', sans-serif;
   }
 
   main {
@@ -31,14 +36,6 @@ canvas {
   	max-width: 100%;
   }
 
-  .buttons-holder{
-  	height: 60vh;
-  }
-
-  .home-buttons {
-	margin: 20px;
-  }
-
   .cool-avatar {
   	width: 144px;
   	height: 144px;
@@ -52,3 +49,10 @@ canvas {
   .start-holder {
   	width: 100%;
   }
+
+  .full-slide{
+    width: 100%;
+    height: 450px;
+  }
+
+ 

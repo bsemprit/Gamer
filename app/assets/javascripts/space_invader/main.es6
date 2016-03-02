@@ -1,7 +1,7 @@
 $(document).on("page:change", function(){
 	console.log("Getting started")
 
-$('.slider').slider('start');
+$('.slider').slider();
 
 
 $("#Space").on("click", function(event){
