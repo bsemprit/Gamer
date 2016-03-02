@@ -47,3 +47,5 @@ end
 gem 'carrierwave'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
+
+gem 'rails_12factor', group: :production
