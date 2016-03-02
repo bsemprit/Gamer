@@ -3,3 +3,8 @@
 $(document).on("page:change", function(){
 $('.slider').slider();
 }
+
+$(document).on("ready", function(){
+$('.slider').slider();
+	
+})
