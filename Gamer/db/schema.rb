@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301141851) do
+ActiveRecord::Schema.define(version: 20160302001515) do
 
   create_table "charities", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20160301141851) do
   add_index "donations", ["charity_id"], name: "index_donations_on_charity_id"
   add_index "donations", ["user_id"], name: "index_donations_on_user_id"
 
+  create_table "game_sessions", force: :cascade do |t|
+    t.integer  "gamer_profile_id"
+    t.integer  "user_id"
+    t.integer  "score"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "game_sessions", ["gamer_profile_id"], name: "index_game_sessions_on_gamer_profile_id"
+  add_index "game_sessions", ["user_id"], name: "index_game_sessions_on_user_id"
+
   create_table "gamer_profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "game_id"
@@ -61,15 +72,14 @@ ActiveRecord::Schema.define(version: 20160301141851) do
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.integer  "game_profile_id"
-    t.integer  "timePlayed"
-    t.integer  "score"
+    t.integer  "gamer_profile_id"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "score"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "sessions", ["game_profile_id"], name: "index_sessions_on_game_profile_id"
+  add_index "sessions", ["gamer_profile_id"], name: "index_sessions_on_gamer_profile_id"
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id"
 
   create_table "space_invaders", force: :cascade do |t|
@@ -103,6 +113,8 @@ ActiveRecord::Schema.define(version: 20160301141851) do
     t.string   "avatar"
     t.string   "role",                   default: "GamerPlayer"
     t.string   "name"
+    t.integer  "score",                  default: 0
+    t.integer  "highscore",              default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

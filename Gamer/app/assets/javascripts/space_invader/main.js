@@ -18,7 +18,7 @@ var screen, input, adSprites, meSprite, deadBullets, deadAliens;
 var alienAds, frames, spriteFrames, changeFrames;
 var dir, shooter, bullet, bullets, bulletsAlien, deadAlienBullets;
 var isGameOver = false;
-
+var points = 0;
 
 //Functions needed to start the game
 
@@ -165,6 +165,7 @@ function update(){
 				console.log(k, "---", i)
 				deadAliens.push(k);
 				deadBullets.push(i);
+				addPoints();
 			}
 		}
 		}
@@ -290,10 +291,33 @@ function removeIndexes (list, deadIndexes) {
 	console.log(deadIndexes);
 }
 
+function addPoints(){
+	points += 100;
+	$(".points").text(points)
+	console.log("Adding points", points)
+}
+
 
 function endGame(){
 	screen.clear();
 	isGameOver = true;
+	generateSession(points);
+}
+
+function generateSession(score){
+	var gameID = $(".points-holder").data("game-id")
+	var userID = $(".points-holder").data("user-id")
+	$.ajax({
+		url: '/api/game_sessions',
+		data: {game_session: {gamer_profile_id: `${gameID}`, score: `${score}`, user_id: `${gameID}`}},
+		method: "POST",
+		success: function(event) {
+			console.log("Yes! Sent it", event)
+		},
+		error: function(event) {
+			console.log(event)
+		}
+	})
 }
 
 })

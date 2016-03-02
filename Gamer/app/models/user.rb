@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_many :charities, through: :userCharities
   has_many :charities, through: :donations
   has_many :donations
+  has_many :gameSessions
 end
