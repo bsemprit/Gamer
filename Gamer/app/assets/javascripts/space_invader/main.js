@@ -104,12 +104,7 @@ function run(){
 		if (isGameOver === true){
 			console.log("GAME OVA");
 			screen.clear();
-			var html =`
-			<div class="valign start-holder center-align">
-					<h4 class="red-text darken-4-text game-over"> GAME OVER </h4><br>
-					<a href="#" class="start-game light-green-text text-accent-4">Start Game</a>
-				</div>
-			`
+			var html ="<div class='valign start-holder center-align'> <h4 class='red-text darken-4-text game-over'> GAME OVER </h4><br> <a href='#' class='start-game light-green-text text-accent-4'>Start Game</a> </div>"
 			$("#Space").empty()
 			$("#Space").append(html)
 			return;
