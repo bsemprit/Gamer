@@ -15,15 +15,25 @@
   <header>
     <nav>
         <div class="nav-wrapper default-nav-bar light-blue accent-3">
-          <%=link_to("G.F.C. Game For Charity", root_path, class:"brand-logo center black-text") %>
+          <div class="container">
+            <%=link_to("G.F.C. Game For Charity", root_path, class:"brand-logo green-text") %>
+            
+          </div>
           <ul id="nav-mobile" class="right hide-on-med-and-down ">
             <li><%= link_to("Games", games_path, class: "black-text") %></li>
             <% if user_signed_in? %>
             <li>
-            <%= link_to("Select a Charity", charities_path, class: "black-text") %>
+                <% if current_user.charities.blank? %>
+                <span class="green-text">Pick a Charity!</span>
+                <% else %>
+                <span class="green-text">Current charity: <%=current_user.charities.last.name%></span>
+                <% end %>
             </li>
             <li>
             <%= link_to("Profile", user_path(current_user), class: "red-text") %>
+            </li>
+            <li>
+            <%= link_to("Select a Charity", charities_path, class: "black-text") %>
             </li>
             <li>
             <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "black-text") %>
