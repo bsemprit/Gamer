@@ -6,6 +6,10 @@ canvas {
 	background-color: #000;
 }
 
+.home-second {
+  margin-top: 20px;
+}
+
 #Space {
 	width: 100%;
 	height: 600px;
@@ -65,4 +69,12 @@ canvas {
     height: 450px;
   }
 
- 
+ .profile-name {
+  margin-top: 70px;
+ }
+
+ .points-holder {
+  position: absolute;
+  top: 38%;
+
+ }
