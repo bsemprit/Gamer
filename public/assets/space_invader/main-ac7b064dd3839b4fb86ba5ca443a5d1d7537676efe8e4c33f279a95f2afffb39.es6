@@ -325,5 +325,5 @@ function afterExplosion(){
 			$("#Space").empty()
 			$("#Space").append(html)
 }
-  
+
 })
