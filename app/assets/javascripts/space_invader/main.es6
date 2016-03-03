@@ -31,13 +31,13 @@ function main() {
 	var meSpriteImage = new Image();
 	meSpriteImage.src = "/assets/nurek.png"
 	var alien = new Image();
-	alien.src = "/assets/UFOs.png"
+	alien.src = "/assets/adresize.jpg"
 
 	alien.addEventListener("load", function(){
 		adSprites = [
-			[new Sprite(alien, 0, 0, 150, 75)],
-			[new Sprite(alien, 170, 0, 150, 75)],
-			[new Sprite(alien, 0, 110, 150, 75)]
+			[new Sprite(alien, 0, 0, 97, 59)],
+			[new Sprite(alien, 0, 0, 97, 59)],
+			[new Sprite(alien, 0, 0, 97, 59)]
 		];
 		// console.log("ALIENS IMAGES");
 		ready();
@@ -91,8 +91,8 @@ function initialize(){
 			var whichRow = rows[i];
 			alienAds.push({
 				sprite: adSprites[whichRow][0],
-				x: 40 + j*150,
-				y: 40 + i*75,
+				x: 40 + j*110,
+				y: 40 + i*70,
 				w: adSprites[whichRow][0].width,
 				h: adSprites[whichRow][0].height
 			})
@@ -218,7 +218,7 @@ function update(){
 		for(var i = 0; i < alienAds.length; i++){
 			// console.log("MOVEMENT LOOPPPPp");
 			var movAlien = alienAds[i];
-			movAlien.x +=260 * dir;
+			movAlien.x +=160 * dir;
 			// console.log(maxPosition);
 			var alienPositionSide = movAlien.x + movAlien.w;
 			var alienPositionHeight = movAlien.y + movAlien.h*2;
