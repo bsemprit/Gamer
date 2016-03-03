@@ -177,7 +177,7 @@ function update(){
 		// console.log("SHOOT?", { amountOfAliens, randomness })
 
 	//random alien shooting
-	if(randomness < .1 && alienAds.length > 0) {
+	if(randomness < .05 && alienAds.length > 0) {
 		var randomAlien = Math.floor(Math.random()*alienAds.length)
 
 		for(var i = 0, len = alienAds.length; i< len; i++){
