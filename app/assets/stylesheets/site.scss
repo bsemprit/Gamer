@@ -18,13 +18,18 @@ canvas {
 
 .brand-logo {
   font-family: 'Black Ops One', cursive;
-  color: red !important;
+  color: rgb(191, 63, 191) !important;
+  margin-left: 40px;
 }
 
 .play-games-home {
   // position: absolute;
   top: 10%;
   left: 0;
+}
+
+.charity-name {
+  color: rgb(191, 63, 191) !important;
 }
 
   body {
@@ -74,7 +79,18 @@ canvas {
  }
 
  .points-holder {
-  position: absolute;
-  top: 38%;
+  position: fixed;
+  right: 0;
+  top: 10%;
+ }
 
+ .points-holder h4 {
+  padding-left: 10px; 
+  border-left: 2px solid red;
+  font-family: 'Black Ops One', cursive;
+ }
+
+ .gc-logo {
+  font-family: 'Black Ops One', cursive;
+  color: rgb(191, 63, 191) !important;
  }

@@ -1,16 +1,30 @@
 <div class="container">
 	<div class="row">
-		<div class="center">
+		<div class="welcome-text">
 			<h3>Welcome to <%= @game.name %>! Time to play.</h3>
 			<h5>What are you doing? <%=@game.description %></h5>
 		</div>
 	</div>
 </div>
-<div class="col l12 ">
-			<div class="points-holder left-align" data-game-id="<%=@game.id%>" data-user-id="<%= current_user.id%>"><h3 class="red-text">Points: <span class="points">0</span></h3></div>
+<div class="col 212 ">
+			<div class="points-holder left-align" data-game-id="<%=@game.id%>" data-user-id="<%= current_user.id%>"><h4 class="red-text black">Points: <span class="points">0</span></h4></div>
 			<div id="<%=@game.name[0..4] %>" class="valign-wrapper">
 				<div class="valign start-holder center-align">
 					<a href="#" class="start-game light-green-text text-accent-4">Start Game</a>
 				</div>
 			</div>
+</div>
+
+<div class="col s12">
+	<div>
+		<h4 class="instructions">Instructions:</h4>
+
+		<p class=" instructions-text">
+			Press <i class="material-icons">keyboard_arrow_left</i> ARROWS <i class="material-icons">keyboard_arrow_right</i> to move left and right. Press SPACEBAR <i class="material-icons">space_bar</i> to shoot. Dodge the red bullets and shoot the alien ads!
+		</p>
+		<div class="center">
+			<a href="/games/<%=@game.id%>" class="waves-effect waves-light btn-large red">Replay!</a>
+			
+		</div>
+	</div>
 </div>

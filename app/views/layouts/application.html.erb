@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GFC</title>
+  <title>GC</title>
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
@@ -15,36 +15,36 @@
 <body>
   <header>
     <nav>
-        <div class="nav-wrapper default-nav-bar light-blue accent-3">
-          <div class="container">
-            <%=link_to("G.F.C. Game For Charity", root_path, class:"brand-logo green-text") %>
+        <div class="nav-wrapper default-nav-bar black">
+       <!--    <div class="container"> -->
+            <%=link_to("Gaming to the Charity", root_path, class:"brand-logo") %>
             
-          </div>
+          <!-- </div> -->
           <ul id="nav-mobile" class="right">
-            <li><%= link_to("Games", games_path, class: "black-text") %></li>
+            <li><%= link_to("Games", games_path, class: "white-text") %></li>
             <% if user_signed_in? %>
             <li>
                 <% if current_user.charities.blank? %>
-                <span class="green-text">Pick a Charity!</span>
+                <span class="white-text">Pick a Charity!</span>
                 <% else %>
-                <span class="green-text">Current charity: <%=current_user.charities.last.name%></span>
+                <span class="white-text">Current charity: <span class="charity-name"><%=current_user.charities.last.name%></span></span>
                 <% end %>
             </li>
             <li>
-            <%= link_to("Profile", user_path(current_user), class: "red-text") %>
+            <%= link_to("Profile", user_path(current_user), class: "white-text") %>
             </li>
             <li>
-            <%= link_to("Select a Charity", charities_path, class: "black-text") %>
+            <%= link_to("Select a Charity", charities_path, class: "white-text") %>
             </li>
             <li>
-            <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "black-text") %>
+            <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "white-text") %>
             </li>
             <% else %>
             <li>
-              <%= link_to("Login", new_user_session_path, class: "black-text") %>
+              <%= link_to("Login", new_user_session_path, class: "white-text") %>
             </li>
             <li>
-            <%= link_to("Sign Up", new_user_registration_path, class: "black-text") %>
+            <%= link_to("Sign Up", new_user_registration_path, class: "white-text") %>
             </li>
             <% end %>
           </ul>
@@ -56,33 +56,33 @@
   
 </main>
 
-<footer class="page-footer light-blue accent-3 black-text">
+<footer class="page-footer white-text black">
           <div class="container ">
             <div class="row">
-              <div class="col l6 s12">
-                <h5 class="black-text">GFC</h5>
-                <h6 class="black-text"> Game for Charity</h6>
-                <p class="black-text">Made with the spirit of coding and gaming.</p>
+              <div class="col l6 s6">
+                <h5 class="white-text gc-logo">GC</h5>
+                <h6 class="white-text gc-logo"> Gaming to the Charity</h6>
+                <p class="white-text">Made with the spirit of coding and gaming.</p>
               </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="black-text">Navigation</h5>
+              <div class="col l4 offset-l2 s4 offset-s2">
+                <h5 class="white-text">Navigation</h5>
                 <ul>
                   <li>
-                      <%=link_to("Home", root_path, class:"black-text") %>
+                      <%=link_to("Home", root_path, class:"white-text") %>
                   </li>
                   <li>
-                      <%= link_to("Games", games_path, class: "black-text") %>
+                      <%= link_to("Games", games_path, class: "white-text") %>
                   </li>
                   <% if current_user %>
                   <li>
-                      <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "black-text") %>
+                      <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "white-text") %>
                   </li>
                   <% else %>
                   <li>
-                     <%= link_to("Login", new_user_session_path, class: "black-text") %>
+                     <%= link_to("Login", new_user_session_path, class: "white-text") %>
                   </li>
                   <li>
-                    <%= link_to("Sign Up", new_user_registration_path, class: "black-text") %> 
+                    <%= link_to("Sign Up", new_user_registration_path, class: "white-text") %> 
                   </li>
                   <% end %>
                 </ul>
@@ -90,8 +90,8 @@
             </div>
           </div>
           <div class="footer-copyright">
-            <div class="container black-text">
-            © 2016 Copyright Text
+            <div class="container white-text">
+            © 2016 Copyright 
             </div>
           </div>
 </footer>

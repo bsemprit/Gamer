@@ -2,8 +2,8 @@
 	<div class="row">
 
 			<% @games.each do |game|%>
-		<div class="col s12 l6">
-				
+		<div class="col s6 l6 ">
+			<a href="/games/<%=game.id%>">	
 			<div class="card large">
             <div class="card-image">
             <%= image_tag "spaceAdInvaders.jpg", size:"400x300" if game.name== "Space Ad Invaders" %>
@@ -17,12 +17,13 @@
               <p> <%= game.description %></p>
             </div>
             <div class="card-action">
-              Play: <a href="/games/<%=game.id%>"><%= game.name %></a>
+              Play: <%= game.name %>
 	          <% if current_user.role == "adminGamer" %>
           	  <%= link_to("Edit", edit_game_path(game)) %>
           	  <% end %>
             </div>
           </div>
+          </a>
 		</div>
           <% end %>
 
