@@ -14,10 +14,12 @@
 </head>
 <body>
   <header>
+    <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper default-nav-bar black">
+        <div class="nav-wrapper default-nav-bar">
        <!--    <div class="container"> -->
-            <%=link_to("Gaming to the Charity", root_path, class:"brand-logo") %>
+            <a href="/" class="brand-icon"><%= image_tag "g2charityLogoPurple.png", class: "g2charityLogo" %></a>
+            <%=link_to("GAMING TO THE CHARITY", root_path, class:"brand-logo") %>
             
           <!-- </div> -->
           <ul id="nav-mobile" class="right">
@@ -27,7 +29,7 @@
                 <% if current_user.charities.blank? %>
                 <span class="white-text">Pick a Charity!</span>
                 <% else %>
-                <span class="white-text">Current charity: <span class="charity-name"><%=current_user.charities.last.name%></span></span>
+                <span class="white-text">Current charity: <span class="charity-name"><%=current_user.current_charity%></span></span>
                 <% end %>
             </li>
             <li>
@@ -50,13 +52,14 @@
           </ul>
         </div>
     </nav>
+    </div>
   </header>
 <main>
   <%= yield %>
   
 </main>
 
-<footer class="page-footer white-text black">
+<footer class="page-footer white-text">
           <div class="container ">
             <div class="row">
               <div class="col l6 s6">

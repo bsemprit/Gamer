@@ -8,18 +8,27 @@ class UsersController < ApplicationController
 
 	def updatecharity
 		user_charity = Charity.find_by(name: params[:charity])
+		puts user_charity.inspect
 		if current_user.charities.find_by(name: user_charity.name)
-			old_charity = current_user.charities.find_by(name: user_charity.name)
-			current_user.charities.delete(old_charity)
-			current_user.charities << user_charity
+			current_user.current_charity = user_charity.name
+			current_user.save!
+			redirect_to user_path(current_user)
 		else
-		current_user.charities << user_charity
+			puts "not found *****************"
+			current_user.charities << user_charity
+			current_user.current_charity = user_charity.name
+			current_user.save!
+			puts current_user.current_charity
+			puts current_user.charities.inspect
+			redirect_to user_path(current_user)
 		end
-		redirect_to user_path(current_user)
+		
 	end
 
 	def show
 		@user = current_user
+		@current_charity = current_user.current_charity
+		puts current_user.inspect
 		render "profile"
 	end
 end

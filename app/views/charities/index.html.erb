@@ -11,12 +11,12 @@
 			<%= form_tag(@user, class:"change-charities-form", method: "post", action:"update", controller:"user") do%>
 				<% @charities.each do |charity| %>
 					<%= radio_button_tag :charity, charity.name, id: charity.id %>
-					<%=label_tag "charity_#{charity.name}", charity.name , class: "black-text"%>
+					<%=label_tag "charity_#{charity.name}", charity.name%>
 					<hr>
 					<br>
 					<% end %>
 					<br>
-					<%= submit_tag "Submit" %>
+					<%= submit_tag "Submit", class: "login-button btn" %>
 					<% end  %>
 
 		</div>
@@ -34,10 +34,10 @@
           <div class="card small">
             <div class="card-image">
             <%= image_tag "hfot.png" %>
-              <span class="card-title"><span class="black">Homes For Our Super Troops</span></span>
+              <!-- <span class="card-title"><span class="black">Homes For Our Super Troops</span></span> -->
             </div>
-            <div class="card-content">
-              <p>Homes for Our Troops** is a nonprofit organization building specially adapted, mortgage-free homes for Vets from Iraq and Afghanistan.</p>
+            <div class="card-content black-text">
+              <p>Homes for Our Troops** is a nonprofit organization building specially adapted, mortgage-free homes for Vets.</p>
             </div>
           </div>
           </div>
@@ -46,9 +46,9 @@
           <div class="card small">
             <div class="card-image">
             <%= image_tag "Adoptions.png" %>
-              <span class="card-title"><span class="black">Humane Society</span></span>
+              <!-- <span class="card-title"><span class="black">Humane Society</span></span> -->
             </div>
-            <div class="card-content">
+            <div class="card-content black-text">
               <p>The Humane Society of the United States** is the nation’s largest and most effective animal protection organization.</p>
             </div>
           </div>
@@ -58,9 +58,9 @@
           <div class="card small">
             <div class="card-image">
 	            <%= image_tag "uncf.jpg" %>
-              <span class="card-title"><span class="black">UNCF (United Negro College Fund)</span></span>
+              <!-- <span class="card-title"><span class="black">UNCF (United Negro College Fund)</span></span> -->
             </div>
-            <div class="card-content">
+            <div class="card-content black-text">
               <p>UNCF**  (United Negro College Fund) is the nation's largest and most effective minority education organization. </p>
             </div>
           </div>
