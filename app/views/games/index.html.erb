@@ -3,8 +3,9 @@
 
 			<% @games.each do |game|%>
 		<div class="col s6 l6 ">
+    <% if game.id == 1 %>
 			<a href="/games/<%=game.id%>">	
-			<div class="card large">
+			<div class="card large black-text">
             <div class="card-image">
             <%= image_tag "spaceAdInvaders.jpg", size:"400x300" if game.name== "Space Ad Invaders" %>
             <%= image_tag "pacMan.gif", size:"400x300" if game.name== "Pac Ad Man" %>
@@ -13,17 +14,41 @@
               <%end %>
               <span class="card-title"> <%=game.name %></span>
             </div>
-            <div class="card-content">
+            <div class="card-content black-text">
+              <p> <%= game.description %></p>
+            </div>
+            <div class="blue-text card-action">
+              Play: <%= game.name %>
+	          <%# if current_user.role == "adminGamer" %>
+          	  <%#= link_to("Edit", edit_game_path(game)) %>
+          	  <%# end %>
+            </div>
+          </div>
+          </a>
+          <% else %>
+
+        <div class="card large black-text">
+            <div class="card-image">
+            <%= image_tag "spaceAdInvaders.jpg", size:"400x300" if game.name== "Space Ad Invaders" %>
+            <%= image_tag "pacMan.gif", size:"400x300" if game.name== "Pac Ad Man" %>
+              <% if game.game_image.nil? %>
+              <img src="images/tile.jpeg">
+              <%end %>
+              <span class="card-title"> <%=game.name %></span>
+            </div>
+            <div class="card-content black-text">
               <p> <%= game.description %></p>
             </div>
             <div class="card-action">
               Play: <%= game.name %>
-	          <% if current_user.role == "adminGamer" %>
-          	  <%= link_to("Edit", edit_game_path(game)) %>
-          	  <% end %>
+            <% if current_user.role == "adminGamer" %>
+              <%= link_to("Edit", edit_game_path(game)) %>
+              <% end %>
             </div>
           </div>
-          </a>
+
+          <% end %>
+
 		</div>
           <% end %>
 

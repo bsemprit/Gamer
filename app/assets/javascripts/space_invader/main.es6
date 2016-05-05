@@ -1,7 +1,5 @@
 $(document).on("page:change", function(){
-	console.log("Getting started")
-
-	$('.slider').slider();
+	// console.log("Getting started");
 
 
 $("#Space").on("click", function(event){
@@ -11,7 +9,7 @@ $("#Space").on("click", function(event){
 	
 })
 
-
+})
 
 
 //Main variables
@@ -62,7 +60,7 @@ function main() {
 };
 
 function initialize(){
-	console.log("INITIALIZE");
+	// console.log("INITIALIZE");
 	frames = 0;
 	// spriteFrames = 0;
 	changeFrames = 60;
@@ -155,7 +153,7 @@ function update(){
 		if (b.y + b.height < 0 || b.y > screen.height){
 			deadBullets.push(i);
 		}
-		console.log(alienAds.length, "Alien Length")
+		// console.log(alienAds.length, "Alien Length")
 		for(var k = 0, alienl = alienAds.length; k < alienl; k++){
 			// console.log("HE GOT SHOT");
 			var possiblyHitAlien = alienAds[k];
@@ -240,8 +238,8 @@ function update(){
 		}
 
 		if(maxHeight > screen.height) {
-			console.log("Game Over")
-			console.log(screen.height, " ---", maxHeight)
+			// console.log("Game Over")
+			// console.log(screen.height, " ---", maxHeight)
 			screen.clear();
 			endGame();
 		}
@@ -301,7 +299,7 @@ function endGame(){
 	screen.clear();
 	isGameOver = true;
 	generateSession(points);
-	console.log("Explosion!")
+	// console.log("Explosion!")
 }
 
 function generateSession(score){
@@ -326,4 +324,3 @@ function afterExplosion(){
 			$("#Space").append(html)
 }
   
-})
